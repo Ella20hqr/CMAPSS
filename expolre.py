@@ -20,9 +20,9 @@ FD004_test = np.loadtxt('CMAPSSData/test_FD004.txt', dtype=float)
 train = (FD001_train, FD002_train, FD003_train, FD004_train)
 test = (FD001_test, FD002_test, FD003_test, FD004_test)
 
-with PdfPages('explore.pdf') as opt:
+with PdfPages('explore.pdf') as pp:
     for j in range(4):
-        fig = plt.figure(figsize=(27, 35))
+        fig = plt.figure()
         fig.tight_layout()
         for i in range(5, 26):
             ax = fig.add_subplot(7, 3, i-4)
@@ -30,4 +30,4 @@ with PdfPages('explore.pdf') as opt:
             ax.scatter(test[j][:,1], test[j][:,i], s=0.5)
             ax.set_xlabel('Cycle')
             ax.set_ylabel(f'Sensor{i-4}')
-        opt.savefig(figure=fig)
+        pp.savefig(figure=fig)
